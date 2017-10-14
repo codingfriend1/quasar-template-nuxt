@@ -1,52 +1,72 @@
 <template>
-  <div>
-    <nuxt/>
+  <div class="q-app">
+    <q-layout
+      ref="layout"
+      view="lHh Lpr fff"
+      :left-class="{'bg-grey-2': true}"
+    >
+      <q-toolbar slot="header" class="glossy">
+        <q-btn
+          flat
+          @click="$refs.layout.toggleLeft()"
+        >
+          <q-icon name="menu" />
+        </q-btn>
+
+        <q-toolbar-title>
+          Quasar App
+          <div slot="subtitle">Running on Quasar v{{$q.version}}</div>
+        </q-toolbar-title>
+      </q-toolbar>
+
+      <div slot="left">
+        <!--
+          Use <q-side-link> component
+          instead of <q-item> for
+          internal vue-router navigation
+        -->
+
+        <q-list no-border link inset-delimiter>
+          <q-list-header>Essential Links</q-list-header>
+          <q-item @click="launch('http://quasar-framework.org')">
+            <q-item-side icon="school" />
+            <q-item-main label="Docs" sublabel="quasar-framework.org" />
+          </q-item>
+          <q-item @click="launch('https://nuxtjs.org/')">
+            <q-item-side icon="school" />
+            <q-item-main label="Nuxt.js Docs" sublabel="nuxtjs.org" />
+          </q-item>
+          <q-item @click="launch('http://forum.quasar-framework.org')">
+            <q-item-side icon="record_voice_over" />
+            <q-item-main label="Forum" sublabel="forum.quasar-framework.org" />
+          </q-item>
+          <q-item @click="launch('https://gitter.im/quasarframework/Lobby')">
+            <q-item-side icon="chat" />
+            <q-item-main label="Gitter Channel" sublabel="Quasar Lobby" />
+          </q-item>
+          <q-item @click="launch('https://twitter.com/quasarframework')">
+            <q-item-side icon="rss feed" />
+            <q-item-main label="Twitter" sublabel="@quasarframework" />
+          </q-item>
+        </q-list>
+      </div>
+
+      <nuxt />
+    </q-layout>
   </div>
 </template>
 
+<script>
+import { openURL } from 'quasar'
+
+export default {
+  methods: {
+    launch (url) {
+      openURL(url)
+    }
+  }
+}
+</script>
+
 <style>
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
 </style>
