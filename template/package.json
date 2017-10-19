@@ -15,7 +15,8 @@
   "dependencies": {
     "nuxt": "^1.0.0-rc11",
     "quasar-extras": "0.0.8",
-    "quasar-framework": "git+https://git@github.com/quasarframework/quasar-future.git"
+    "quasar-framework": "git+https://git@github.com/quasarframework/quasar-future.git",
+    "vue-no-ssr": "^0.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

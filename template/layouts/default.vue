@@ -27,6 +27,12 @@
         -->
 
         <q-list no-border link inset-delimiter>
+          <q-list-header>Local Test Links</q-list-header>
+
+          <q-side-link to="/">Home</q-side-link>
+          <q-side-link to="/dateTime">Date Time</q-side-link>
+          <q-side-link to="/scroll-area">Date Time</q-side-link>
+
           <q-list-header>Essential Links</q-list-header>
           <q-item @click="launch('http://quasar-framework.org')">
             <q-item-side icon="school" />

@@ -1,4 +1,5 @@
 const theme = 'mat' // Quasar themes: "mat", "ios"
+const webpack = require('webpack')
 
 module.exports = {
   /*
@@ -24,6 +25,10 @@ module.exports = {
   css: [
     `~/assets/themes/app.${theme}.styl`
   ],
+
+  router: {
+    middleware: 'userAgent'
+  },
   /*
   ** Customize the progress bar color
   */
@@ -40,6 +45,20 @@ module.exports = {
     */
     extend (config, ctx) {
       config.resolve.alias.quasar = `quasar-framework/dist/quasar.${theme}.esm`
+
+      if(process.env.NODE_ENV === 'test-development') {
+        config.resolve.alias.quasar = `quasar-framework/src/index.esm`
+      }
+
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: '"development"'
+          },
+          '__THEME__': "'mat'"
+        })
+      )
+      
 
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
