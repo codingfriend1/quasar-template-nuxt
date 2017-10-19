@@ -24,6 +24,9 @@ module.exports = {
   css: [
     `~/assets/themes/app.${theme}.styl`
   ],
+  router: {
+    middleware: 'userAgent'
+  },
   /*
   ** Customize the progress bar color
   */
